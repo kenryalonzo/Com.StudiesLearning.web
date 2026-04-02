@@ -1,82 +1,78 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
 import { HeroButton } from "./HeroButton";
 import { HeroVisual } from "./HeroVisual";
+import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#fafafa] pt-20">
-      {/* Abstract Background Elements */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Subtle geometric background tiles (simulating the reference texture) */}
-        <div className="absolute top-0 right-0 w-[50vw] h-[100vh] bg-[linear-gradient(45deg,transparent_25%,rgba(0,0,0,0.01)_25%,rgba(0,0,0,0.01)_50%,transparent_50%,transparent_75%,rgba(0,0,0,0.01)_75%,rgba(0,0,0,0.01)_100%)] bg-[length:64px_64px]" />
+    <section className="relative min-h-[90vh] w-full flex items-center justify-center overflow-hidden">
+      {/* Exact Native Background Asset */}
+      <Image
+        src="/assets/background-image.jpg"
+        alt="Background Texture"
+        fill
+        priority
+        className="absolute inset-0 z-0 object-cover opacity-90 mix-blend-multiply"
+      />
 
-        {/* Soft shadow gradients */}
-        <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-white blur-[100px]" />
-      </div>
+      {/* Container aligned specifically 45% left / 55% right */}
+      <div className="container max-w-[1200px] relative z-10 mx-auto px-6 h-full flex flex-col md:flex-row items-center justify-between mt-20 md:mt-0">
+        {/* LEFT BLOCK: 45% Width */}
+        <div className="w-full md:w-[45%] flex flex-col items-start text-left flex-shrink-0 z-20 md:-mt-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="mb-6 px-4 py-1.5 flex items-center bg-[#fdf2ec] rounded-full border border-orange-100"
+          >
+            <span className="text-[13px] font-medium text-[#ff7a45]">
+              Studies Learning
+            </span>
+          </motion.div>
 
-      <div className="container relative z-10 mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          {/* Text Content */}
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left max-w-2xl mx-auto lg:mx-0">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="mb-8 p-1.5 pr-4 flex items-center bg-orange-50 rounded-full border border-orange-100 w-fit"
-            >
-              <span className="w-6 h-6 rounded-full bg-orange-200 flex items-center justify-center mr-3 shadow-sm" />
-              <span className="text-xs font-semibold text-[#ff7a45] uppercase tracking-wider">
-                Studies Learning
-              </span>
-            </motion.div>
+          {/* Heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+            className="text-[52px] md:text-[64px] font-extrabold tracking-tight text-[#4a3978] leading-[1.05] mb-5 w-[110%]"
+          >
+            Mastery, curated.
+          </motion.h1>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#3b2b68] leading-[1.1] mb-6"
-            >
-              Mastery, <br className="hidden sm:block" /> curated.
-            </motion.h1>
+          {/* Paragraph */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-[17px] text-zinc-600 font-medium leading-[1.6] mb-10 max-w-[420px]"
+          >
+            The digital curator for your intellectual journey. Experience a
+            dual-engine environment that adapts to how you think.
+          </motion.p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="text-lg sm:text-xl text-zinc-500 font-medium leading-relaxed mb-10 max-w-lg"
-            >
-              The digital curator for your intellectual journey. Experience a
-              dual-engine environment that adapts to how you think.
-            </motion.p>
+          {/* Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="flex items-center gap-4"
+          >
+            <HeroButton className="bg-[#5a488c] hover:bg-[#483770] text-white text-[15px] font-medium px-7 py-3.5 rounded-lg shadow-md border-transparent">
+              Commencer maintenant
+            </HeroButton>
+            <HeroButton className="bg-[#fafafa]/80 hover:bg-[#fff5f0] text-[#ff7a45] border border-[#ff7a45] text-[15px] font-medium px-7 py-3.5 rounded-lg backdrop-blur-sm">
+              Contactez-nous
+            </HeroButton>
+          </motion.div>
+        </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
-            >
-              <HeroButton
-                variant="primary"
-                className="w-full sm:w-auto bg-[#53408a] hover:bg-[#433175] text-lg px-8 py-4 h-auto shadow-[0_8px_24px_rgba(83,64,138,0.25)] ring-[#53408a]"
-              >
-                Commencer maintenant
-              </HeroButton>
-              <HeroButton
-                variant="outline"
-                className="w-full sm:w-auto text-lg px-8 py-4 h-auto"
-              >
-                Contactez-nous
-              </HeroButton>
-            </motion.div>
-          </div>
-
-          {/* Graphical UI Element */}
-          <div className="w-full flex justify-center lg:justify-end pr-0 lg:pr-8 py-8">
-            <HeroVisual />
-          </div>
+        {/* RIGHT VISUAL: 55% Width */}
+        <div className="w-full md:w-[55%] h-full flex justify-end items-center flex-shrink-0 mt-12 md:mt-0 z-10">
+          <HeroVisual />
         </div>
       </div>
     </section>
