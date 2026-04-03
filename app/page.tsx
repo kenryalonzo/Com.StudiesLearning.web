@@ -4,6 +4,7 @@ import { SectionWhyChooseUs } from "@/components/SectionWhyChooseUs";
 import { SectionSwitchModes } from "@/components/SectionSwitchModes";
 import { SectionReview } from "@/components/SectionReview";
 import { SectionCTA } from "@/components/SectionCTA";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <SectionSwitchModes />
       <SectionReview />
       <SectionCTA />
+      <Footer />
     </main>
   );
 }
