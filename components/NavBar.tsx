@@ -60,19 +60,13 @@ export function NavBar() {
             href="#method"
             className="text-[15px] font-medium text-zinc-600 transition-colors hover:text-[#4f3885]"
           >
-            Méthodologie
+            Devenir formateur
           </Link>
           <Link
             href="#pricing"
             className="text-[15px] font-medium text-zinc-600 transition-colors hover:text-[#4f3885]"
           >
-            Tarifs
-          </Link>
-          <Link
-            href="#about"
-            className="text-[15px] font-medium text-zinc-600 transition-colors hover:text-[#4f3885]"
-          >
-            À propos
+            Le blog
           </Link>
         </div>
 
