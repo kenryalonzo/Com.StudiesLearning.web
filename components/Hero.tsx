@@ -78,7 +78,7 @@ export function Hero() {
         </div>
 
         {/* RIGHT VISUAL: 55% Width */}
-        <div className="w-full md:w-[55%] flex justify-end items-center shrink-0 z-10 w-full max-w-[500px] lg:max-w-[580px] mx-auto md:mx-0">
+        <div className="w-full md:w-[55%] flex justify-end items-center shrink-0 z-10 max-w-[500px] lg:max-w-[580px] mx-auto md:mx-0">
           <HeroVisual />
         </div>
       </div>
