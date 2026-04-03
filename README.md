@@ -41,13 +41,7 @@ Ouvrez ensuite [http://localhost:3000](http://localhost:3000) dans votre navigat
 
 ## 🚀 Mise en Production
 
-L'application est 100% optimisée pour la phase de déploiement (0 alertes avec le linter strict). Le moyen le plus efficace de déployer :
-
-1. Uploadez votre code sur **GitHub**, **GitLab** ou **BitBucket**.
-2. Connectez le dépôt à une plateforme comme **Vercel** ou **Netlify**.
-3. **Important** : N'oubliez pas d'assigner l'URL canonique finale configurée dans les variables d'environnement pour assurer la bonne fonctionnalité du cache Open-Graph :
-   - Clé : `NEXT_PUBLIC_SITE_URL`
-   - Valeur : `https://votresitedefinitif.com`
+Fait sur vercel.
 
 ## 🪪 Licence & Création
 
