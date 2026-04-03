@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://votre-domaine-final.com",
+  ),
   title: "Studies Learning | L'avant-garde de l'apprentissage",
   description:
     "Rejoignez l'élite digitale. Plus de distractions. Uniquement un savoir pur et condensé pour accélérer votre trajectoire.",
