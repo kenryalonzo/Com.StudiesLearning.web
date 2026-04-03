@@ -83,7 +83,7 @@ export function HeroVisual() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.7, duration: 0.8 }}
         whileHover={{ scale: 1.05 }}
-        className="absolute left-[-1.5rem] top-[45%] z-20 flex flex-col items-start p-4 w-[140px] rounded-2xl bg-white/60 backdrop-blur-md shadow-[0_8px_16px_rgba(0,0,0,0.04)] border border-white/50"
+        className="absolute -left-6 top-[45%] z-20 flex flex-col items-start p-4 w-[140px] rounded-2xl bg-white/60 backdrop-blur-md shadow-[0_8px_16px_rgba(0,0,0,0.04)] border border-white/50"
       >
         {/* Interrogation Icon Top Left */}
         <div className="absolute -top-6 left-6 h-[46px] w-[46px] shadow-sm bg-[#ff7a45] rounded-full p-[10px] flex items-center justify-center border-4 border-[#ffb8a0]">

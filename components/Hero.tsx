@@ -21,7 +21,7 @@ export function Hero() {
       {/* Container aligned specifically 45% left / 55% right */}
       <div className="container max-w-[1200px] relative z-10 mx-auto px-6 h-full flex flex-col md:flex-row items-center justify-between mt-20 md:mt-0">
         {/* LEFT BLOCK: 45% Width */}
-        <div className="w-full md:w-[45%] flex flex-col items-start text-left flex-shrink-0 z-20 md:-mt-10">
+        <div className="w-full md:w-[45%] flex flex-col items-start text-left shrink-0 z-20 md:-mt-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ export function Hero() {
         </div>
 
         {/* RIGHT VISUAL: 55% Width */}
-        <div className="w-full md:w-[55%] h-full flex justify-end items-center flex-shrink-0 mt-12 md:mt-0 z-10">
+        <div className="w-full md:w-[55%] h-full flex justify-end items-center shrink-0 mt-12 md:mt-0 z-10">
           <HeroVisual />
         </div>
       </div>

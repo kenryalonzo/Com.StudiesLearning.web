@@ -51,6 +51,12 @@ export function NavBar() {
           href="#courses"
           className="text-sm font-medium text-zinc-600 transition-colors hover:text-[#4361ee] dark:text-zinc-400 dark:hover:text-white"
         >
+          Accueil
+        </Link>
+        <Link
+          href="#courses"
+          className="text-sm font-medium text-zinc-600 transition-colors hover:text-[#4361ee] dark:text-zinc-400 dark:hover:text-white"
+        >
           Cours et formation
         </Link>
         <Link

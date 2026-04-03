@@ -23,7 +23,7 @@ export function SectionWhyChooseUs() {
 
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8">
           {/* LEFT: 40% Visual Block */}
-          <div className="w-full lg:w-[40%] flex-shrink-0 relative z-10">
+          <div className="w-full lg:w-[40%] shrink-0 relative z-10">
             <VisualBlock />
           </div>
 

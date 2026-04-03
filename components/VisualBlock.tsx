@@ -14,7 +14,7 @@ export function VisualBlock() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute bottom-0 w-[90%] md:w-[85%] h-[85%] rounded-[3rem] bg-gradient-to-br from-[#536dfe] to-[#304ffe] shadow-xl overflow-hidden"
+        className="absolute bottom-0 w-[90%] md:w-[85%] h-[85%] rounded-[3rem] bg-linear-to-br from-[#536dfe] to-[#304ffe] shadow-xl overflow-hidden"
       >
         <div className="absolute inset-0 bg-[url('/assets/background-image.jpg')] opacity-10 mix-blend-overlay" />
       </motion.div>
@@ -89,7 +89,7 @@ export function VisualBlock() {
       >
         <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_16px_40px_rgba(0,0,0,0.08)] border border-white/60 p-4 w-[110px] sm:w-[130px] flex flex-col gap-3">
           {/* Image placeholder block */}
-          <div className="w-full aspect-[4/3] bg-zinc-100 rounded-xl flex items-center justify-center relative overflow-hidden">
+          <div className="w-full aspect-4/3 bg-zinc-100 rounded-xl flex items-center justify-center relative overflow-hidden">
             <div className="absolute -top-3 -right-3 w-10 h-10 blur-sm rounded-full bg-blue-100" />
             <div className="relative w-8 h-8 rounded shadow-sm overflow-hidden z-10 bg-white p-1">
               <Image

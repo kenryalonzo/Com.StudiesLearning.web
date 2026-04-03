@@ -88,7 +88,7 @@ export function SectionSwitchModes() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative w-full max-w-[600px] aspect-[4/5] rounded-l-3xl rounded-tr-[120px] rounded-br-none rounded-bl-[120px] overflow-hidden shadow-2xl"
+            className="relative w-full max-w-[600px] aspect-4/5 rounded-l-3xl rounded-tr-[120px] rounded-br-none rounded-bl-[120px] overflow-hidden shadow-2xl"
           >
             <Image
               src="/assets/working-people.png"
