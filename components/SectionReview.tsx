@@ -1,68 +1,134 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ReviewCard } from "./ReviewCard";
+import { motion } from "framer-motion";
+
+const REVIEWS_DATA = [
+  {
+    id: 0,
+    score: "4.8",
+    name: "Rizka Amalia",
+    role: "Penanya",
+    content:
+      "L'interface m'a offert des réponses claires, sans bruit, éliminant totalement mes heures de recherche inutiles.",
+    avatarSrc: "/assets/michael-dam-mEZ3PoFGs_k-unsplash.png",
+  },
+  {
+    id: 1,
+    score: "4.9",
+    name: "Fajar Nur",
+    role: "Chercheur",
+    content:
+      "Super service ! Totalement en symbiose avec mes besoins. L'absence de distractions est un luxe incroyable.",
+    avatarSrc: "/assets/albert-dera-ILip77SbmOE-unsplash.png",
+  },
+  {
+    id: 2,
+    score: "5.0",
+    name: "Alima Sari",
+    role: "Étudiante",
+    content:
+      "Une esthétique qui m'apaise. Le mode switch a révolutionné mon apprentissage lors du sprint de révision.",
+    avatarSrc: "/assets/joseph-gonzalez-iFgRcqHznqg-unsplash.png",
+  },
+];
 
 export function SectionReview() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Auto-slide logic
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % REVIEWS_DATA.length);
+    }, 6000); // 6 seconds auto-play
+    return () => clearInterval(timer);
+  }, []);
+
+  const slideNext = () =>
+    setActiveIndex((current) => (current + 1) % REVIEWS_DATA.length);
+  const slidePrev = () =>
+    setActiveIndex(
+      (current) => (current - 1 + REVIEWS_DATA.length) % REVIEWS_DATA.length,
+    );
+
+  const getPreviousIndex = () =>
+    (activeIndex - 1 + REVIEWS_DATA.length) % REVIEWS_DATA.length;
+  const getNextIndex = () => (activeIndex + 1) % REVIEWS_DATA.length;
+
   return (
-    <section className="relative w-full py-28 bg-[#e6e6e8] overflow-hidden flex flex-col items-center justify-center">
+    <section className="relative w-full py-16 lg:py-20 bg-transparent overflow-visible flex flex-col items-center justify-center z-10">
       {/* Title & Subtitle */}
-      <div className="text-center mb-16 px-6">
-        <h2 className="text-4xl sm:text-[44px] font-extrabold text-[#53408a] mb-4">
-          Review
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ ease: "easeOut", duration: 0.8 }}
+        className="text-center mb-10 px-6 z-20"
+      >
+        <h2 className="text-3xl sm:text-[40px] font-extrabold text-[#2a1b38] mb-3 tracking-tight">
+          Avis vérifiés
         </h2>
-        <p className="text-lg text-zinc-700 font-medium tracking-wide">
-          Lebih dari 17.000 penanya telah terbantu
+        <p className="text-base text-zinc-500 font-medium tracking-wide">
+          Plus de 17 000 utilisateurs quotidiens.
         </p>
-      </div>
+      </motion.div>
 
-      {/* Primary Carousel Structure Container */}
-      <div className="relative w-full max-w-[1400px] flex items-center justify-center h-auto min-h-[400px]">
-        {/* Background/Offset Cards Limits Container */}
-        <div className="absolute inset-0 flex items-center justify-between pointer-events-none opacity-40 xl:opacity-100">
-          {/* Left Hidden Card */}
-          <div className="w-[30%] translate-x-[-40%] scale-95 opacity-60 transition-transform duration-500 hidden md:block">
+      {/* Dynamic Native Carousel Container */}
+      <div className="relative w-full max-w-[1300px] flex items-center justify-center h-auto min-h-[340px] md:min-h-[380px] z-20">
+        {/* Background / Peripheral Left Card (PREVIOUS) */}
+        <div className="absolute left-[-20%] md:left-[-10%] lg:left-[5%] xl:left-[10%] w-[80%] md:w-[60%] lg:w-[45%] pointer-events-none select-none z-0">
+          <motion.div
+            key={`prev-${REVIEWS_DATA[getPreviousIndex()].id}`}
+            initial={{ opacity: 0, scale: 0.9, x: -40 }}
+            animate={{ opacity: 0.4, scale: 0.9, x: 0 }}
+            exit={{ opacity: 0, scale: 0.85, x: 40 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
             <ReviewCard
-              score="4.8"
-              name="Fajar Nur"
-              role="Penanya"
-              content="Sangat membantu ! Saya tidak menyangka layanannya sebagus ini."
-              avatarSrc="/assets/albert-dera-ILip77SbmOE-unsplash.png"
+              {...REVIEWS_DATA[getPreviousIndex()]}
               isActive={false}
             />
-          </div>
-          {/* Right Hidden Card */}
-          <div className="w-[30%] translate-x-[40%] scale-95 opacity-60 transition-transform duration-500 hidden md:block">
-            <ReviewCard
-              score="4.9"
-              name="Alima Sari"
-              role="Pelajar"
-              content="Banyak teman yang menyarankan, dan benar saja hasilnya memuaskan."
-              avatarSrc="/assets/joseph-gonzalez-iFgRcqHznqg-unsplash.png"
-              isActive={false}
-            />
-          </div>
+          </motion.div>
         </div>
 
-        {/* Central Active Card Structure */}
-        <div className="relative z-10 px-4 w-full flex items-center justify-center">
-          <ReviewCard
-            score="4.8"
-            name="Rizka Amalia"
-            role="Penanya"
-            content="Saya sudah banyak mencari tentang pertanyaan yang saya cari saat ini, dan di Brainly Reborn ini saya mendapatkan jawaban yang akurat dan simple."
-            avatarSrc="/assets/michael-dam-mEZ3PoFGs_k-unsplash.png"
-          />
+        {/* Background / Peripheral Right Card (NEXT) */}
+        <div className="absolute right-[-20%] md:right-[-10%] lg:right-[5%] xl:right-[10%] w-[80%] md:w-[60%] lg:w-[45%] pointer-events-none select-none z-0">
+          <motion.div
+            key={`next-${REVIEWS_DATA[getNextIndex()].id}`}
+            initial={{ opacity: 0, scale: 0.9, x: 40 }}
+            animate={{ opacity: 0.4, scale: 0.9, x: 0 }}
+            exit={{ opacity: 0, scale: 0.85, x: -40 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ReviewCard {...REVIEWS_DATA[getNextIndex()]} isActive={false} />
+          </motion.div>
         </div>
 
-        {/* Navigation Buttons */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-20 flex justify-between px-6 sm:px-12 md:px-24 w-full max-w-[96vw] lg:max-w-7xl mx-auto pointer-events-none">
-          <button className="pointer-events-auto h-12 w-12 flex items-center justify-center rounded-full border-[2.5px] border-zinc-400 text-zinc-500 hover:border-[#53408a] hover:text-[#53408a] hover:bg-white hover:scale-105 transition-all shadow-sm">
+        {/* Central Foreground Active Card */}
+        <div className="relative z-20 px-4 w-full md:w-[70%] lg:w-[50%] flex items-center justify-center pointer-events-auto">
+          <motion.div
+            key={`active-${REVIEWS_DATA[activeIndex].id}`}
+            initial={{ opacity: 0.3, scale: 0.95, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full"
+          >
+            <ReviewCard {...REVIEWS_DATA[activeIndex]} isActive={true} />
+          </motion.div>
+        </div>
+
+        {/* Interactive Navigation Controller Arrows */}
+        <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-30 flex justify-between px-4 sm:px-10 lg:px-20 w-full max-w-[100vw] lg:max-w-7xl mx-auto pointer-events-none">
+          <button
+            onClick={slidePrev}
+            className="pointer-events-auto group h-12 w-12 flex items-center justify-center rounded-full border border-zinc-200 bg-white/60 backdrop-blur-md text-zinc-500 hover:border-[#53408a] hover:text-[#53408a] hover:bg-white hover:shadow-lg hover:scale-110 transition-all duration-300 shadow-sm"
+          >
             <svg
-              className="w-5 h-5"
+              className="w-5 h-5 transition-transform group-hover:-translate-x-0.5"
               fill="none"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="2.5"
               viewBox="0 0 24 24"
             >
               <path
@@ -72,12 +138,15 @@ export function SectionReview() {
               />
             </svg>
           </button>
-          <button className="pointer-events-auto h-12 w-12 flex items-center justify-center rounded-full border-[2.5px] border-zinc-400 text-zinc-500 hover:border-[#53408a] hover:text-[#53408a] hover:bg-white hover:scale-105 transition-all shadow-sm">
+          <button
+            onClick={slideNext}
+            className="pointer-events-auto group h-12 w-12 flex items-center justify-center rounded-full border border-zinc-200 bg-white/60 backdrop-blur-md text-zinc-500 hover:border-[#53408a] hover:text-[#53408a] hover:bg-white hover:shadow-lg hover:scale-110 transition-all duration-300 shadow-sm"
+          >
             <svg
-              className="w-5 h-5"
+              className="w-5 h-5 transition-transform group-hover:translate-x-0.5"
               fill="none"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="2.5"
               viewBox="0 0 24 24"
             >
               <path
@@ -87,49 +156,6 @@ export function SectionReview() {
               />
             </svg>
           </button>
-        </div>
-      </div>
-
-      {/* Bottom Floating Visual Elements */}
-      <div className="absolute bottom-12 w-full flex justify-between items-center px-4 md:px-12 lg:px-24 pointer-events-none opacity-80">
-        {/* Left Bottom Star Widget */}
-        <div className="relative flex items-center">
-          <div className="bg-white/40 h-24 w-32 rounded-3xl backdrop-blur-sm -ml-8 flex flex-col justify-center gap-3 p-4">
-            <div className="w-full h-1.5 bg-zinc-300 rounded-full opacity-50" />
-            <div className="w-2/3 h-1.5 bg-zinc-300 rounded-full opacity-50" />
-            <div className="w-[85%] h-1.5 bg-zinc-300 rounded-full opacity-50" />
-          </div>
-          <div className="absolute top-0 right-0 -mr-6 h-12 w-12 bg-white rounded-2xl shadow-lg flex items-center justify-center">
-            <svg
-              className="w-6 h-6 text-[#ffcd1f]"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          </div>
-        </div>
-
-        {/* Center Muted Text */}
-        <span className="text-zinc-400 text-sm font-medium">
-          Dari bertanya hingga mengerti
-        </span>
-
-        {/* Right Bottom Star Widget */}
-        <div className="relative flex items-center">
-          <div className="absolute top-0 left-0 -ml-6 h-12 w-12 bg-white rounded-2xl shadow-lg flex items-center justify-center z-10">
-            <svg
-              className="w-6 h-6 text-[#ffcd1f]"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          </div>
-          <div className="bg-white/40 h-24 w-32 rounded-3xl backdrop-blur-sm flex flex-col justify-center gap-3 p-4 pl-10">
-            <div className="w-full h-1.5 bg-zinc-300 rounded-full opacity-50" />
-            <div className="w-[85%] h-1.5 bg-zinc-300 rounded-full opacity-50" />
-          </div>
         </div>
       </div>
     </section>

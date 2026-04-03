@@ -18,9 +18,9 @@ export function Footer() {
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 lg:px-12 pt-20 pb-8 flex flex-col">
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 lg:px-12 pt-12 pb-6 flex flex-col">
         {/* Top Section: Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 mb-12">
           {/* Logo & Description */}
           <div className="lg:col-span-5 flex flex-col items-start lg:items-center text-center lg:text-left xl:items-start pl-0 xl:pl-4">
             <div className="relative w-64 h-24 mb-4">
@@ -31,9 +31,9 @@ export function Footer() {
                 className="object-contain"
               />
             </div>
-            <p className="text-zinc-300 text-[15px] font-medium leading-relaxed max-w-[320px]">
-              Join the new vanguard of digital learners. No templates, no noise.
-              Just pure, unadulterated knowledge.
+            <p className="text-zinc-300 text-[14px] font-medium leading-relaxed max-w-[280px]">
+              L&apos;avant-garde de l&apos;apprentissage. Aucun bruit. Juste le
+              savoir à l&apos;état pur.
             </p>
           </div>
 
@@ -151,12 +151,12 @@ export function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="w-full border-t border-white/20 my-6" />
+        <div className="w-full border-t border-white/10 my-6" />
 
         {/* Copyright */}
         <div className="text-center w-full">
-          <p className="text-zinc-400 text-sm">
-            © 2026 Studies Learning. The Digital Curator.
+          <p className="text-zinc-500 text-xs">
+            © 2026 Studies Learning. Architecturé pour l&apos;excellence.
           </p>
         </div>
       </div>

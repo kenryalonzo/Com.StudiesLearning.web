@@ -12,12 +12,12 @@ export function SectionWhyChooseUs() {
         {/* Mobile Title (shows only on small screens for better UX, originally assumed desktop layout) */}
         <div className="block lg:hidden mb-12 text-center">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-extrabold text-[#ff6122]"
+            className="text-[38px] sm:text-[46px] font-extrabold text-[#2a1b38]"
           >
-            Why choose us?
+            Pourquoi <span className="text-[#ff6122]">nous choisir ?</span>
           </motion.h2>
         </div>
 
@@ -31,42 +31,42 @@ export function SectionWhyChooseUs() {
           <div className="w-full lg:w-[60%] flex flex-col items-center lg:items-start z-10 pl-0 lg:pl-12 xl:pl-20">
             {/* Desktop Title */}
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
-              className="hidden lg:block text-[44px] xl:text-[54px] font-extrabold text-[#ff6122] tracking-tight mb-12"
+              className="hidden lg:block text-[40px] xl:text-[48px] font-extrabold text-[#2a1b38] tracking-tight mb-12"
             >
-              Why choose us?
+              Pourquoi <span className="text-[#ff6122]">nous choisir ?</span>
             </motion.h2>
 
             {/* Matrix Feature Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 w-full max-w-2xl lg:max-w-none">
               <FeatureCard
                 delay={0.1}
-                title="Adaptive Pathing"
-                description="Our engine monitors your cognitive load and adjusts difficulty in real-time to keep you in 'flow'."
+                title="Parcours Adaptatif"
+                description="Notre IA ajuste la difficulté en temps réel pour un apprentissage en état de flux constant."
                 iconSrc="/assets/Edit.png"
               />
 
               <FeatureCard
                 delay={0.2}
-                title="Curated Library"
-                description="Access a refined repository of world-class educational content, parsed for maximum signal."
+                title="Librairie Premium"
+                description="Accès instantané à un répertoire de solutions éducatives vérifiées. Aucun bruit."
                 iconSrc="/assets/Star.png"
               />
 
               <FeatureCard
                 delay={0.3}
-                title="Intelligent adaptation"
-                description="Our AI analyzes your strengths and weaknesses to personalize the learning path."
+                title="Soutien Intelligent"
+                description="Analyse de vos schémas cognitifs pour vous guider exactement là où vous bloquez."
                 iconSrc="/assets/Paper Plus.png"
               />
 
               <FeatureCard
                 delay={0.4}
-                title="Credentialing"
-                description="Earn verified credentials that reflect not just knowledge, but deep-seated competency."
+                title="Développement Pur"
+                description="Générez de la vraie compétence, et laissez l'IA abstraire les tâches rébarbatives."
                 iconSrc="/assets/Discovery.png"
               />
             </div>

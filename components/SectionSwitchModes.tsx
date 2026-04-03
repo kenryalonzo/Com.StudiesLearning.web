@@ -4,197 +4,194 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { HeroButton } from "./HeroButton";
-import { FloatingElement } from "./FloatingElement";
 
 export function SectionSwitchModes() {
   return (
-    <section className="relative w-full min-h-screen py-24 bg-[#fef6ee] overflow-hidden flex items-center">
-      {/* Bottom-left decor ring */}
-      <div className="absolute left-0 bottom-0 w-[400px] h-[400px] z-0 pointer-events-none opacity-40">
+    <section className="relative w-full py-16 md:py-20 lg:py-24 bg-white overflow-visible flex items-center shadow-xs">
+      {/* 
+        PREMIUM UX OVERLAP FIX: Bottom-left decor ring moved drastically downward
+        so it natively overlaps this section baseline AND BLEEDS into the next module
+      */}
+      <div className="absolute -left-8 -bottom-32 md:-bottom-48 w-[350px] md:w-[450px] h-[350px] md:h-[450px] z-0 pointer-events-none opacity-30 mix-blend-multiply">
         <Image
           src="/assets/demi-cercle.png"
-          alt="Decoration"
+          alt="Decoration Loop"
           fill
-          className="object-contain object-bottom-left"
+          className="object-contain object-bottom"
         />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 max-w-[1280px] relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-        {/* LEFT COLUMN: Text Content */}
+      <div className="container mx-auto px-6 lg:px-12 max-w-[1240px] relative z-10 flex flex-col lg:flex-row items-center gap-14 lg:gap-20">
+        {/* LEFT COLUMN: Compressed Text Content */}
         <div className="w-full lg:w-[45%] flex flex-col items-start relative z-20">
           <motion.span
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-[#ff7a45] font-bold tracking-wide uppercase mb-4"
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-[#ff7a45] font-bold tracking-widest uppercase text-sm mb-3"
           >
             Switching
           </motion.span>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[40px] md:text-[52px] font-extrabold text-[#53408a] leading-[1.1] mb-8"
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+            className="text-[38px] md:text-[48px] font-extrabold text-[#2a1b38] leading-[1.1] mb-6 tracking-tight"
           >
-            Switch modes in a<br />
-            heartbeat.
+            Change de mode <br /> en un clin d&apos;œil.
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-zinc-700 leading-relaxed mb-12 max-w-lg"
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-[17px] text-zinc-600 font-medium leading-relaxed mb-10 max-w-[480px]"
           >
-            Whether you need a conversational guide to explain complex concepts
-            or a structured workbench for deep research, Studies Learning pivots
-            to your current mental state.
+            Qu&apos;il s&apos;agisse d&apos;un guide conversationnel pour
+            vulgariser vos doutes ou d&apos;un atelier condensé pour la
+            recherche, l&apos;interface pivote instantanément selon votre humeur
+            mentale.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true, margin: "-40px" }}
             className="relative"
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           >
-            <HeroButton className="bg-[#5a488c] hover:bg-[#483770] text-white px-8 py-4 rounded-full font-medium">
+            <HeroButton className="bg-[#4f3885] hover:bg-[#3d2a6a] text-white px-8 py-3.5 rounded-full font-medium shadow-md hover:shadow-lg transition-all scale-100 hover:scale-105">
               Tanya sekarang
             </HeroButton>
 
-            {/* Hand-drawn inline SVG arrow */}
+            {/* Premium refined hand-drawn arrow curve */}
             <svg
-              className="absolute -right-24 top-0 w-32 h-24 text-zinc-300 pointer-events-none opacity-80"
+              className="absolute -right-28 -top-2 w-[120px] h-[80px] text-zinc-300 pointer-events-none opacity-70 drop-shadow-sm"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1.5"
+              strokeWidth="2"
+              strokeLinecap="round"
               viewBox="0 0 100 100"
             >
-              <path d="M 10 20 Q 50 60 90 90" strokeDasharray="4 4" />
-              <path d="M 10 20 L 25 10 M 10 20 L 20 30" />
+              <path d="M 10 20 Q 50 20 85 80" strokeDasharray="4 4" />
+              <path d="M 75 70 L 85 80 L 70 85" strokeWidth="2.5" />
             </svg>
           </motion.div>
         </div>
 
-        {/* RIGHT COLUMN: Image & Floating Cards */}
+        {/* RIGHT COLUMN: Compressed Premium Image Matrix */}
         <div className="w-full lg:w-[55%] relative flex justify-end">
-          {/* Constrained Image Wrapper */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative w-full max-w-[600px] aspect-4/5 rounded-l-3xl rounded-tr-[120px] rounded-br-none rounded-bl-[120px] overflow-hidden shadow-2xl"
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative w-full max-w-[540px] aspect-4/5 rounded-l-2xl rounded-tr-[100px] rounded-br-none rounded-bl-[100px] overflow-hidden shadow-[0_24px_50px_rgba(0,0,0,0.06)] border border-zinc-100/50"
           >
             <Image
               src="/assets/working-people.png"
-              alt="People working"
+              alt="Professionals in deep focus"
               fill
-              sizes="(max-width: 1024px) 100vw, 600px"
+              sizes="(max-width: 1024px) 100vw, 540px"
               className="object-cover"
             />
           </motion.div>
 
-          {/* FLOATING CARD 1: Autonome AI Guide (Top Left Image constraint) */}
-          <FloatingElement
-            delay={0}
-            duration={6}
-            yOffset={6}
-            className="absolute -top-6 left-12 lg:left-0 z-30"
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            whileHover={{ scale: 1.03, y: -2 }}
+            className="absolute -top-4 left-6 lg:left-0 z-30 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.08)] px-5 py-3 border border-white"
           >
-            <div className="bg-white rounded-3xl shadow-[0_12px_24px_rgba(0,0,0,0.06)] px-6 py-4 flex flex-col items-center justify-center">
-              <span className="text-zinc-900 font-extrabold text-[15px] leading-tight text-center">
-                Autonome
-                <br />
-                AI Guide
-              </span>
-            </div>
-          </FloatingElement>
+            <span className="text-[#2a1b38] font-extrabold text-sm leading-tight text-center tracking-tight">
+              Autonome <br /> AI Guide
+            </span>
+          </motion.div>
 
-          {/* FLOATING CARD 2: Questioner avatars (Bottom Right) */}
-          <FloatingElement
-            delay={0.5}
-            duration={5}
-            yOffset={8}
-            className="absolute -bottom-8 right-0 sm:-right-8 z-30"
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            whileHover={{ scale: 1.03, y: -2 }}
+            className="absolute bottom-6 -left-6 sm:-left-12 lg:-left-20 z-30 bg-white/90 backdrop-blur-lg rounded-3xl shadow-[0_16px_40px_rgba(0,0,0,0.08)] p-2 pr-6 flex items-center gap-4 border border-white"
           >
-            <div className="bg-white rounded-3xl shadow-[0_16px_32px_rgba(0,0,0,0.06)] p-5 flex flex-col">
-              <span className="text-[13px] font-bold text-zinc-900 mb-3 ml-1 tracking-wide">
-                Questioner
-              </span>
-              <div className="flex -space-x-3 items-center">
-                <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative shadow-sm">
+            <div className="w-[48px] h-[48px] rounded-2xl bg-[#ff7a45] text-white flex items-center justify-center font-bold text-2xl shadow-sm border-b-4 border-[#e06330]">
+              ?
+            </div>
+            <div className="flex flex-col gap-2.5">
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded-full overflow-hidden relative shadow-sm">
                   <Image
                     src="/assets/joseph-gonzalez-iFgRcqHznqg-unsplash.png"
-                    alt="User 1"
+                    alt="Mini User 1"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative shadow-sm">
+                <div className="h-1.5 w-10 bg-zinc-200/80 rounded-full" />
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded-full overflow-hidden relative shadow-sm">
                   <Image
                     src="/assets/michael-dam-mEZ3PoFGs_k-unsplash.png"
-                    alt="User 2"
+                    alt="Mini User 2"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative shadow-sm">
-                  <Image
-                    src="/assets/albert-dera-ILip77SbmOE-unsplash.png"
-                    alt="User 3"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="w-10 h-10 rounded-full border-2 border-white bg-[#1a5cff] text-white flex items-center justify-center text-[11px] font-bold shadow-sm relative z-10">
-                  +117
-                </div>
+                <div className="h-1.5 w-14 bg-zinc-200/80 rounded-full" />
               </div>
             </div>
-          </FloatingElement>
+          </motion.div>
 
-          {/* FLOATING CARD 3: Left Orange (?) Interaction Component */}
-          <FloatingElement
-            delay={1}
-            duration={4.5}
-            yOffset={4}
-            className="absolute bottom-6 -left-8 sm:-left-12 lg:-left-20 z-30"
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            whileHover={{ scale: 1.03, y: -2 }}
+            className="absolute -bottom-6 right-0 sm:right-6 z-30 bg-white/95 backdrop-blur-md rounded-[1.5rem] shadow-[0_20px_40px_rgba(0,0,0,0.06)] p-4 border border-white"
           >
-            <div className="bg-white rounded-3xl shadow-[0_12px_32px_rgba(0,0,0,0.06)] p-2 pr-6 flex items-center gap-4">
-              <div className="w-[52px] h-[52px] rounded-2xl bg-[#ff7a45] text-white flex items-center justify-center font-bold text-2xl shadow-md border-b-4 border-[#e06330]">
-                ?
+            <span className="text-[12px] font-extrabold text-[#2a1b38] block mb-2.5 ml-1 uppercase tracking-widest">
+              Questioner
+            </span>
+            <div className="flex -space-x-2.5 items-center">
+              <div className="w-9 h-9 rounded-full border-2 border-white overflow-hidden relative shadow-sm z-30">
+                <Image
+                  src="/assets/joseph-gonzalez-iFgRcqHznqg-unsplash.png"
+                  alt="User 1"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full overflow-hidden relative border border-white">
-                    <Image
-                      src="/assets/joseph-gonzalez-iFgRcqHznqg-unsplash.png"
-                      alt="Mini User 1"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="h-2 w-8 bg-zinc-200 rounded-full" />
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full overflow-hidden relative border border-white">
-                    <Image
-                      src="/assets/michael-dam-mEZ3PoFGs_k-unsplash.png"
-                      alt="Mini User 2"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="h-2 w-10 bg-zinc-200 rounded-full" />
-                </div>
+              <div className="w-9 h-9 rounded-full border-2 border-white overflow-hidden relative shadow-sm z-20">
+                <Image
+                  src="/assets/michael-dam-mEZ3PoFGs_k-unsplash.png"
+                  alt="User 2"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="w-9 h-9 rounded-full border-2 border-white overflow-hidden relative shadow-sm z-10">
+                <Image
+                  src="/assets/albert-dera-ILip77SbmOE-unsplash.png"
+                  alt="User 3"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="w-9 h-9 rounded-full border-2 border-white bg-blue-600 text-white flex items-center justify-center text-[10px] font-bold shadow-sm relative z-0">
+                +117
               </div>
             </div>
-          </FloatingElement>
+          </motion.div>
         </div>
       </div>
     </section>
