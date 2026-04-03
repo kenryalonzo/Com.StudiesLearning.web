@@ -1,101 +1,157 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { HeroButton } from "./HeroButton";
-import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
 
 export function NavBar() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 20);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className={cn(
-        "fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-4 transition-all duration-300 md:px-12 lg:px-24",
-        isScrolled
-          ? "bg-white/90 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.04)] dark:bg-black/90"
-          : "bg-transparent",
-      )}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 pointer-events-auto ${
+        scrolled
+          ? "bg-white/80 backdrop-blur-md border-b border-zinc-200/50 shadow-sm py-4"
+          : "bg-transparent py-6"
+      }`}
     >
-      {/* Logo Area */}
-      <Link
-        href="/"
-        className="flex items-center group relative w-44 h-12 transition-transform hover:scale-105"
-      >
-        <Image
-          src="/assets/logo.png"
-          alt="Studies Learning"
-          fill
-          priority
-          sizes="(max-width: 768px) 140px, 176px"
-          className="object-contain object-left"
-        />
-      </Link>
-
-      {/* Center Links (Desktop only) */}
-      <nav className="hidden items-center gap-8 md:flex">
-        <Link
-          href="#courses"
-          className="text-sm font-medium text-zinc-600 transition-colors hover:text-[#4361ee] dark:text-zinc-400 dark:hover:text-white"
-        >
-          Accueil
-        </Link>
-        <Link
-          href="#courses"
-          className="text-sm font-medium text-zinc-600 transition-colors hover:text-[#4361ee] dark:text-zinc-400 dark:hover:text-white"
-        >
-          Cours et formation
-        </Link>
-        <Link
-          href="#mentoring"
-          className="text-sm font-medium text-zinc-600 transition-colors hover:text-[#4361ee] dark:text-zinc-400 dark:hover:text-white"
-        >
-          Devenir formateur
-        </Link>
-        <Link
-          href="#blog"
-          className="text-sm font-medium text-zinc-600 transition-colors hover:text-[#4361ee] dark:text-zinc-400 dark:hover:text-white"
-        >
-          Le blog
-        </Link>
-      </nav>
-
-      {/* Right CTA */}
-      <div className="flex items-center">
-        <HeroButton className="hidden md:inline-flex" variant="primary">
-          Commencer
-        </HeroButton>
-
-        {/* Mobile menu icon */}
-        <button className="md:hidden p-2 text-zinc-500">
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+      <div className="container mx-auto px-6 max-w-[1240px] flex items-center justify-between">
+        {/* Left Side: Logo */}
+        <Link href="/" className="flex items-center">
+          <div
+            className={`relative ${scrolled ? "h-6 w-32" : "h-8 w-40"} transition-all duration-300`}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
+            <Image
+              src="/assets/logo.png"
+              alt="Studies Learning"
+              fill
+              priority
+              className="object-contain object-left"
             />
-          </svg>
+          </div>
+        </Link>
+
+        {/* Center: Desktop Navigation Links */}
+        <div className="hidden lg:flex items-center gap-8 xl:gap-12">
+          <Link
+            href="#accueil"
+            className="text-[15px] font-bold text-[#ff6122] transition-colors"
+          >
+            Accueil
+          </Link>
+          <Link
+            href="#courses"
+            className="text-[15px] font-medium text-zinc-600 transition-colors hover:text-[#4f3885]"
+          >
+            Cours et formation
+          </Link>
+          <Link
+            href="#method"
+            className="text-[15px] font-medium text-zinc-600 transition-colors hover:text-[#4f3885]"
+          >
+            Méthodologie
+          </Link>
+          <Link
+            href="#pricing"
+            className="text-[15px] font-medium text-zinc-600 transition-colors hover:text-[#4f3885]"
+          >
+            Tarifs
+          </Link>
+          <Link
+            href="#about"
+            className="text-[15px] font-medium text-zinc-600 transition-colors hover:text-[#4f3885]"
+          >
+            À propos
+          </Link>
+        </div>
+
+        {/* Right Side: Desktop Actions */}
+        <div className="hidden lg:flex items-center gap-4">
+          <Link
+            href="/login"
+            className="text-[15px] font-medium text-[#4f3885] hover:text-[#3d2a6a] transition-colors"
+          >
+            Connexion
+          </Link>
+          <Link
+            href="/signup"
+            className="bg-[#ff6122] hover:bg-[#e0531a] text-white px-6 py-2.5 rounded-full text-[15px] font-semibold transition-all shadow-sm hover:shadow-md"
+          >
+            S&apos;inscrire
+          </Link>
+        </div>
+
+        {/* Mobile Hamburger Toggle */}
+        <button
+          className="lg:hidden text-zinc-800 p-2 focus:outline-none"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle mobile menu"
+        >
+          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
-    </motion.header>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-zinc-200/50 shadow-xl flex flex-col py-6 px-6 gap-6 animation-fade-in z-50">
+          <Link
+            href="#accueil"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-lg font-bold text-[#ff6122] border-b border-zinc-100 pb-3"
+          >
+            Accueil
+          </Link>
+          <Link
+            href="#courses"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-lg font-medium text-zinc-700 hover:text-[#4f3885] border-b border-zinc-100 pb-3"
+          >
+            Cours et formation
+          </Link>
+          <Link
+            href="#method"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-lg font-medium text-zinc-700 hover:text-[#4f3885] border-b border-zinc-100 pb-3"
+          >
+            Méthodologie
+          </Link>
+          <Link
+            href="#pricing"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-lg font-medium text-zinc-700 hover:text-[#4f3885] border-b border-zinc-100 pb-3"
+          >
+            Tarifs
+          </Link>
+
+          <div className="flex flex-col gap-4 mt-2">
+            <Link
+              href="/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-center py-3 text-lg font-semibold text-[#4f3885] border border-[#4f3885] rounded-full"
+            >
+              Connexion
+            </Link>
+            <Link
+              href="/signup"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-center py-3 text-lg font-semibold text-white bg-[#ff6122] rounded-full"
+            >
+              S&apos;inscrire
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }

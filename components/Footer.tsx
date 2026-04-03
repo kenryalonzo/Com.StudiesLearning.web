@@ -18,12 +18,12 @@ export function Footer() {
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 lg:px-12 pt-12 pb-6 flex flex-col">
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-12 pt-12 pb-6 flex flex-col">
         {/* Top Section: Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 mb-10 sm:mb-12">
           {/* Logo & Description */}
-          <div className="lg:col-span-5 flex flex-col items-start lg:items-center text-center lg:text-left xl:items-start pl-0 xl:pl-4">
-            <div className="relative w-64 h-24 mb-4">
+          <div className="lg:col-span-5 flex flex-col items-center sm:items-start lg:items-center text-center sm:text-left xl:items-start pl-0 xl:pl-4">
+            <div className="relative w-48 h-16 sm:w-64 sm:h-24 mb-4">
               <Image
                 src="/assets/logo-white.png"
                 alt="Studies Learning Logo"
@@ -31,23 +31,25 @@ export function Footer() {
                 className="object-contain"
               />
             </div>
-            <p className="text-zinc-300 text-[14px] font-medium leading-relaxed max-w-[280px]">
+            <p className="text-zinc-300 text-[13px] sm:text-[14px] font-medium leading-relaxed max-w-[280px]">
               L&apos;avant-garde de l&apos;apprentissage. Aucun bruit. Juste le
               savoir à l&apos;état pur.
             </p>
           </div>
 
           {/* Links Section */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-10">
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 text-center sm:text-left">
             {/* Column 1 */}
             <div className="flex flex-col">
-              <h4 className="text-white font-bold text-lg mb-6">Navigation</h4>
+              <h4 className="text-white font-bold text-base sm:text-lg mb-4 sm:mb-6">
+                Navigation
+              </h4>
               <ul className="flex flex-col gap-3">
                 {[...Array(4)].map((_, i) => (
                   <li key={`nav-${i}`}>
                     <Link
                       href="#"
-                      className="text-zinc-300 hover:text-white transition-colors text-[15px]"
+                      className="text-zinc-300 hover:text-white transition-colors text-[14px] sm:text-[15px]"
                     >
                       Navigation
                     </Link>
@@ -58,13 +60,15 @@ export function Footer() {
 
             {/* Column 2 */}
             <div className="flex flex-col">
-              <h4 className="text-white font-bold text-lg mb-6">Lien</h4>
+              <h4 className="text-white font-bold text-base sm:text-lg mb-4 sm:mb-6">
+                Lien
+              </h4>
               <ul className="flex flex-col gap-3">
                 {[...Array(4)].map((_, i) => (
                   <li key={`lien-${i}`}>
                     <Link
                       href="#"
-                      className="text-zinc-300 hover:text-white transition-colors text-[15px]"
+                      className="text-zinc-300 hover:text-white transition-colors text-[14px] sm:text-[15px]"
                     >
                       Navigation
                     </Link>
@@ -75,13 +79,15 @@ export function Footer() {
 
             {/* Column 3 */}
             <div className="flex flex-col">
-              <h4 className="text-white font-bold text-lg mb-6">Service</h4>
+              <h4 className="text-white font-bold text-base sm:text-lg mb-4 sm:mb-6">
+                Service
+              </h4>
               <ul className="flex flex-col gap-3">
                 {[...Array(4)].map((_, i) => (
                   <li key={`service-${i}`}>
                     <Link
                       href="#"
-                      className="text-zinc-300 hover:text-white transition-colors text-[15px]"
+                      className="text-zinc-300 hover:text-white transition-colors text-[14px] sm:text-[15px]"
                     >
                       Navigation
                     </Link>
@@ -95,25 +101,29 @@ export function Footer() {
         {/* Contacts & Socials Row */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8 w-full">
           {/* Contact Details */}
-          <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 pl-0 xl:pl-4">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 md:gap-12 pl-0 xl:pl-4">
             <div className="flex items-center gap-3">
-              <MapPin className="text-[#ff6122] fill-[#ff6122] w-6 h-6" />
-              <span className="text-zinc-300 text-[15px]">Makepe</span>
+              <MapPin className="text-[#ff6122] fill-[#ff6122] w-5 h-5 sm:w-6 sm:h-6" />
+              <span className="text-zinc-300 text-[14px] sm:text-[15px]">
+                Makepe
+              </span>
             </div>
             <div className="flex items-center gap-3">
-              <Phone className="text-[#ff6122] fill-[#ff6122] w-6 h-6" />
-              <span className="text-zinc-300 text-[15px]">Makepe</span>
+              <Phone className="text-[#ff6122] fill-[#ff6122] w-5 h-5 sm:w-6 sm:h-6" />
+              <span className="text-zinc-300 text-[14px] sm:text-[15px]">
+                Makepe
+              </span>
             </div>
             <div className="flex items-center gap-3">
-              <Mail className="text-[#ff6122] fill-[#ff6122] w-6 h-6" />
-              <span className="text-zinc-300 text-[15px]">
+              <Mail className="text-[#ff6122] fill-[#ff6122] w-5 h-5 sm:w-6 sm:h-6" />
+              <span className="text-zinc-300 text-[14px] sm:text-[15px]">
                 Makepe@gmail.com
               </span>
             </div>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 mt-2 md:mt-0">
             <Link
               href="#"
               className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:scale-110 transition-transform"
@@ -155,7 +165,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="text-center w-full">
-          <p className="text-zinc-500 text-xs">
+          <p className="text-zinc-500 text-[11px] sm:text-xs">
             © 2026 Studies Learning. Architecturé pour l&apos;excellence.
           </p>
         </div>

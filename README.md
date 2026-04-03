@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Studies Learning 🚀
 
-## Getting Started
+Studies Learning est une plateforme éducative premium conçue pour offrir une expérience d'apprentissage sans bruit, fluide, adaptative et résolument axée sur le savoir pur. Cette application garantit une expérience utilisateur immersive et dynamique en éliminant les distractions classiques avec une esthétique poussée.
 
-First, run the development server:
+## 🎯 Architecture Technique
+
+Le projet a été pensé pour offrir d'excellentes performances tout en maintenant une qualité visuelle irréprochable.
+
+- **Framework** : [Next.js 16 (App Router)](https://nextjs.org/)
+- **Style Visuel** : [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations** : [Framer Motion](https://www.framer.com/motion/)
+- **Icons** : [Lucide React](https://lucide.dev/) (ainsi que des composants vectoriels natifs en SVG standardisés)
+- **Typographie** : Nativement optimisée avec Next Fonts (Inter & Geist).
+
+## ✨ Fonctionnalités Clés
+
+- **Hero Section Immersive** : Interface visuellement riche avec effets de survol synchronisés (Backdrop Blur, ombres adoucies).
+- **Mode Switching** : Mise en page compressée pour permettre un basculement de charge cognitive géré par des guides conversationnels (AI).
+- **Carousel Automatisé (`SectionReview`)** : Affichage d'avis utilisateurs fluides grâce un fonctionnement interactif (`useState`, `useEffect` Hook Logic) générant une rotation active en évitant les surcharges CSS encombrantes.
+- **Grille de Navigation (Footer/CTA)** : Agencement strict de Call To Action (CTA) et paramétrage intelligent des paddings pour renforcer le côté _Premium_.
+- **SEO & Open-Graph (Optimisé)** : Balises Open-Graph pré-générées pour optimiser le partage natif sur Facebook, WhatsApp et Twitter via un cheminement d'URI universel.
+
+## ⚙️ Installation & Démarrage
+
+### Pré-requis
+
+Avoir `Node.js` et `npm` préinstallés sur votre machine (L'idéal étant Node 20+).
 
 ```bash
+# 1. Cloner ou naviguer dans le dossier du projet
+cd /votre-chemin/studies
+
+# 2. Installer les dépendances
+npm install
+
+# 3. Lancer le serveur de développement local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrez ensuite [http://localhost:3000](http://localhost:3000) dans votre navigateur pour visualiser la plateforme.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Mise en Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+L'application est 100% optimisée pour la phase de déploiement (0 alertes avec le linter strict). Le moyen le plus efficace de déployer :
 
-## Learn More
+1. Uploadez votre code sur **GitHub**, **GitLab** ou **BitBucket**.
+2. Connectez le dépôt à une plateforme comme **Vercel** ou **Netlify**.
+3. **Important** : N'oubliez pas d'assigner l'URL canonique finale configurée dans les variables d'environnement pour assurer la bonne fonctionnalité du cache Open-Graph :
+   - Clé : `NEXT_PUBLIC_SITE_URL`
+   - Valeur : `https://votresitedefinitif.com`
 
-To learn more about Next.js, take a look at the following resources:
+## 🪪 Licence & Création
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Interface architecturée pour l'excellence visuelle et l'expérience utilisateur optimisée. Aucun droit de conception réservé hors des standards Open Source habituels des dépendances appelées.

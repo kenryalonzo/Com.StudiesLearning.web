@@ -57,27 +57,27 @@ export function SectionReview() {
   const getNextIndex = () => (activeIndex + 1) % REVIEWS_DATA.length;
 
   return (
-    <section className="relative w-full py-16 lg:py-20 bg-transparent overflow-visible flex flex-col items-center justify-center z-10">
+    <section className="relative w-full py-12 sm:py-16 lg:py-20 bg-transparent overflow-visible flex flex-col items-center justify-center z-10 px-4 md:px-0">
       {/* Title & Subtitle */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ ease: "easeOut", duration: 0.8 }}
-        className="text-center mb-10 px-6 z-20"
+        className="text-center mb-8 sm:mb-10 px-6 z-20"
       >
-        <h2 className="text-3xl sm:text-[40px] font-extrabold text-[#2a1b38] mb-3 tracking-tight">
+        <h2 className="text-[28px] sm:text-3xl md:text-[40px] font-extrabold text-[#2a1b38] mb-2 sm:mb-3 tracking-tight">
           Avis vérifiés
         </h2>
-        <p className="text-base text-zinc-500 font-medium tracking-wide">
+        <p className="text-[14px] sm:text-base text-zinc-500 font-medium tracking-wide">
           Plus de 17 000 utilisateurs quotidiens.
         </p>
       </motion.div>
 
       {/* Dynamic Native Carousel Container */}
-      <div className="relative w-full max-w-[1300px] flex items-center justify-center h-auto min-h-[340px] md:min-h-[380px] z-20">
-        {/* Background / Peripheral Left Card (PREVIOUS) */}
-        <div className="absolute left-[-20%] md:left-[-10%] lg:left-[5%] xl:left-[10%] w-[80%] md:w-[60%] lg:w-[45%] pointer-events-none select-none z-0">
+      <div className="relative w-full max-w-[1300px] flex items-center justify-center h-auto min-h-[300px] md:min-h-[340px] lg:min-h-[380px] z-20 overflow-hidden md:overflow-visible">
+        {/* Background / Peripheral Left Card (PREVIOUS) - Hidden on Mobile */}
+        <div className="hidden md:block absolute left-[-10%] lg:left-[5%] xl:left-[10%] w-[60%] lg:w-[45%] pointer-events-none select-none z-0">
           <motion.div
             key={`prev-${REVIEWS_DATA[getPreviousIndex()].id}`}
             initial={{ opacity: 0, scale: 0.9, x: -40 }}
@@ -92,8 +92,8 @@ export function SectionReview() {
           </motion.div>
         </div>
 
-        {/* Background / Peripheral Right Card (NEXT) */}
-        <div className="absolute right-[-20%] md:right-[-10%] lg:right-[5%] xl:right-[10%] w-[80%] md:w-[60%] lg:w-[45%] pointer-events-none select-none z-0">
+        {/* Background / Peripheral Right Card (NEXT) - Hidden on Mobile */}
+        <div className="hidden md:block absolute right-[-10%] lg:right-[5%] xl:right-[10%] w-[60%] lg:w-[45%] pointer-events-none select-none z-0">
           <motion.div
             key={`next-${REVIEWS_DATA[getNextIndex()].id}`}
             initial={{ opacity: 0, scale: 0.9, x: 40 }}
@@ -106,7 +106,7 @@ export function SectionReview() {
         </div>
 
         {/* Central Foreground Active Card */}
-        <div className="relative z-20 px-4 w-full md:w-[70%] lg:w-[50%] flex items-center justify-center pointer-events-auto">
+        <div className="relative z-20 w-full sm:px-4 md:w-[70%] lg:w-[50%] flex items-center justify-center pointer-events-auto">
           <motion.div
             key={`active-${REVIEWS_DATA[activeIndex].id}`}
             initial={{ opacity: 0.3, scale: 0.95, y: 15 }}
@@ -119,13 +119,13 @@ export function SectionReview() {
         </div>
 
         {/* Interactive Navigation Controller Arrows */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-30 flex justify-between px-4 sm:px-10 lg:px-20 w-full max-w-[100vw] lg:max-w-7xl mx-auto pointer-events-none">
+        <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-30 flex justify-between px-1 sm:px-4 md:px-10 lg:px-20 w-full max-w-[100vw] lg:max-w-7xl mx-auto pointer-events-none">
           <button
             onClick={slidePrev}
-            className="pointer-events-auto group h-12 w-12 flex items-center justify-center rounded-full border border-zinc-200 bg-white/60 backdrop-blur-md text-zinc-500 hover:border-[#53408a] hover:text-[#53408a] hover:bg-white hover:shadow-lg hover:scale-110 transition-all duration-300 shadow-sm"
+            className="pointer-events-auto group h-10 w-10 sm:h-12 sm:w-12 flex items-center justify-center rounded-full border border-zinc-200 bg-white/80 md:bg-white/60 backdrop-blur-md text-zinc-500 hover:border-[#53408a] hover:text-[#53408a] hover:bg-white hover:shadow-lg hover:scale-110 transition-all duration-300 shadow-sm"
           >
             <svg
-              className="w-5 h-5 transition-transform group-hover:-translate-x-0.5"
+              className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-0.5"
               fill="none"
               stroke="currentColor"
               strokeWidth="2.5"
@@ -140,10 +140,10 @@ export function SectionReview() {
           </button>
           <button
             onClick={slideNext}
-            className="pointer-events-auto group h-12 w-12 flex items-center justify-center rounded-full border border-zinc-200 bg-white/60 backdrop-blur-md text-zinc-500 hover:border-[#53408a] hover:text-[#53408a] hover:bg-white hover:shadow-lg hover:scale-110 transition-all duration-300 shadow-sm"
+            className="pointer-events-auto group h-10 w-10 sm:h-12 sm:w-12 flex items-center justify-center rounded-full border border-zinc-200 bg-white/80 md:bg-white/60 backdrop-blur-md text-zinc-500 hover:border-[#53408a] hover:text-[#53408a] hover:bg-white hover:shadow-lg hover:scale-110 transition-all duration-300 shadow-sm"
           >
             <svg
-              className="w-5 h-5 transition-transform group-hover:translate-x-0.5"
+              className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-0.5"
               fill="none"
               stroke="currentColor"
               strokeWidth="2.5"
